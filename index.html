@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super Shahad Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.cdnfonts.com/css/super-mario-256" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="container">
+    <h1 id="greeting" class="fade-in">Super Shahad Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="controls">
+      <button id="themeToggle" aria-label="Toggle theme">Theme</button>
+      <button id="setNameBtn" aria-label="Set username">Set Name</button>
+      <button id="resetProgress">Reset Progress</button>
+    </div>
+  </header>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="block-section container">
+    <h2>About Me</h2>
+    <p>
+      It’s me, <strong>SHAHAD ALHASSAN</strong>!
+      A web developer who loves building fun, interactive, and user-friendly experiences —
+      just like exploring a Mario world.
+    </p>
+  </section>
+
+  <!-- ===== GitHub API Integration ===== -->
+  <section id="github-projects" class="container block-section">
+    <h2>My Latest GitHub Repositories</h2>
+    <p class="muted">This section loads automatically using the GitHub API.</p>
+    <div id="repo-list">Loading...</div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" class="container">
+    <h2>Click the Blocks to Reveal My Skills!</h2>
+    <div class="blocks">
+      <div class="block" data-skill="HTML" tabindex="0" aria-label="HTML block"></div>
+      <div class="block" data-skill="CSS" tabindex="0" aria-label="CSS block"></div>
+      <div class="block" data-skill="JavaScript" tabindex="0" aria-label="JS block"></div>
+      <div class="block" data-skill="Responsive Design" tabindex="0" aria-label="Responsive Design block"></div>
+      <div class="block" data-skill="Python" tabindex="0" aria-label="Python block"></div>
+      <div class="block" data-skill="MySQL" tabindex="0" aria-label="MySQL block"></div>
+      <div class="block" data-skill="Java" tabindex="0" aria-label="Java block"></div>
+      <div class="block" data-skill="GitHub" tabindex="0" aria-label="GitHub block"></div>
+
+    </div>
+    <p id="skillHint" class="muted"></p>
+  </section>
+
+  <!-- ===== User Personalization / State Management ===== -->
+  <section id="userStateSection" class="container block-section">
+    <h2>Welcome Back!</h2>
+    <p id="welcomeMessage" class="muted"></p>
+
+    <p>You have been on this page for: <strong id="visitTimer">0</strong> seconds</p>
+    <p>Total visits to this portfolio: <strong id="visitCount">0</strong></p>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section id="projects" class="block-section container">
+    <h2>My Projects</h2>
+
+    <div class="panel">
+      <div class="row">
+        <input id="searchInput" type="search" placeholder="Search projects…" aria-label="Live search" />
+        <select id="tagFilter" aria-label="Filter by tag">
+          <option value="all">All Projects</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+        <select id="sortSelect" aria-label="Sort projects">
+          <option value="dateDesc">Newest</option>
+          <option value="dateAsc">Oldest</option>
+          <option value="titleAsc">A → Z</option>
+          <option value="titleDesc">Z → A</option>
+        </select>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div id="projectsGrid" class="grid"></div>
+    <div id="emptyState" class="empty hidden">No projects found.</div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="block-section container">
+    <h2>Contact Me</h2>
+    <form id="contactForm" novalidate>
+      <label>
+        Name
+        <input name="name" required />
+        <small class="error" data-for="name"></small>
+      </label>
+      <label>
+        Email
+        <input name="email" type="email" required />
+        <small class="error" data-for="email"></small>
+      </label>
+      <label>
+        Message
+        <textarea name="message" required minlength="10"></textarea>
+        <small class="error" data-for="message"></small>
+      </label>
+      <button type="submit">Send</button>
+      <div id="formFeedback" class="feedback" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="container muted">
+    <p>© <span id="year"></span> Shahad Alhassan — Leveling Up One Project at a Time
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
+

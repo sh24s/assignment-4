@@ -1,0 +1,215 @@
+/* ===== Global Styles ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Super Mario 256', sans-serif;
+    color: #000;
+    text-align: center;
+    background: url("../assets/images/mario.jpeg") repeat-x;
+    background-size: cover;
+    cursor: url("../assets/images/star.png"), auto;
+}
+html { scroll-behavior: smooth; }
+
+/* ===== Header ===== */
+header {
+    background: #d32f2f;
+    padding: 1.5rem;
+    border-bottom: 6px solid #000;
+}
+header h1 { margin: 0; font-size: 1rem; }
+nav ul {
+    list-style: none; padding: 0; display: flex; justify-content: center;
+    gap: 2rem; margin-top: 1rem;
+}
+nav a { color: #ffeb3b; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+
+/* ===== Section White Boxes ===== */
+.block-section {
+    background: #fff; color: #000; border: 4px solid #000;
+    padding: 2rem; margin: 2rem auto; max-width: 800px;
+    box-shadow: 5px 5px 0 #333; border-radius: 6px; text-align: center;
+}
+
+/* ===== Skills Blocks ===== */
+.blocks { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
+.block {
+    width: 80px; height: 80px;
+    background: url("../assets/images/block_svg.jpeg") no-repeat center center;
+    background-size: cover;
+    border: 4px solid #000; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; font-family: 'Super Mario 256', sans-serif;
+    color: transparent; /* hide text until revealed */
+    transition: transform 0.2s ease-in-out, background 0.3s;
+}
+.block:hover { transform: translateY(-5px); }
+.block.revealed {
+    background: #FFD700; color: #000; border: 4px solid #000;
+    box-shadow: 3px 3px 0 #333; text-align: center;
+}
+
+/* ===== Projects (legacy image cards if needed) ===== */
+.project { margin: 2rem auto; max-width: 600px; }
+.project img { width: 100%; border: 4px solid #000; margin-bottom: 1rem; }
+
+/* ===== Grid / Utilities ===== */
+.container { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.controls { display: flex; gap: 8px; align-items: center; }
+.panel { background: rgba(255,255,255,.8); padding: 16px; border-radius: 6px; border: 4px solid #000; margin: 16px 0; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.card {
+    background: #fff; padding: 16px; border-radius: 6px; border: 4px solid #000;
+    box-shadow: 3px 3px 0 #333;
+}
+.muted { color: #444; }
+.hidden { display: none !important; }
+.empty { text-align: center; padding: 24px; }
+
+/* ===== Contact Form ===== */
+form {
+    display: flex; flex-direction: column; gap: 1rem;
+    max-width: 400px; margin: 0 auto;
+}
+form input, form textarea {
+    padding: 1rem; border: 4px solid #000; border-radius: 6px;
+    font-family: 'Press Start 2P', cursive; font-size: 0.7rem;
+}
+form button {
+    padding: 1rem; background: #ffcc00; border: 4px solid #000; cursor: pointer;
+}
+form button:hover { background: #ffe066; animation: coinPulse 0.5s infinite alternate; }
+@keyframes coinPulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+.error { color: #dc2626; height: 18px; display: block; margin-top: 4px; }
+
+/* ===== Footer ===== */
+footer { background: #388e3c; border-top: 6px solid #000; padding: 1rem; color: #fff; }
+
+/* ===== Animation & Transition Enhancements ===== */
+.fade-in { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+@keyframes fadeInUp { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:translateY(0);} }
+
+.block.revealed { animation: glowReveal 0.4s ease-out; }
+@keyframes glowReveal { 0%{box-shadow:0 0 0px #FFD700;} 50%{box-shadow:0 0 15px #FFD700;} 100%{box-shadow:3px 3px 0 #333;} }
+
+.feedback { min-height: 1.2rem; font-size: 0.7rem; margin-top: 0.3rem; }
+.feedback.ok { color:#16a34a; animation: pop 0.3s ease; }
+.feedback.err { color:#dc2626; animation: shake 0.25s ease; }
+@keyframes pop { from{transform:scale(0.95)} to{transform:scale(1)} }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-3px)} 75%{transform:translateX(3px)} }
+
+#skillHint { font-size: 0.7rem; color:#444; margin-top:1rem; opacity:0; transition: opacity .5s ease; }
+#skillHint.fade-in { opacity: 1; }
+
+/* ===== Theme Toggle (light/dark) ===== */
+html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
+html[data-theme="dark"] body { background-blend-mode: multiply; }
+
+/* ===== Scroll Fade & Stagger Effect ===== */
+section, .block-section, .project, .block {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section.visible, .block-section.visible, .project.visible, .block.visible {
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+/* =====================================================
+ GITHUB REPO CARDS
+   ===================================================== */
+#github-projects .repo-card {
+    background: #fff;
+    padding: 1.2rem;
+    border: 4px solid #000;
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 #333;
+    margin: 1rem auto;
+    max-width: 650px;
+    text-align: left;
+}
+
+#github-projects .repo-card h3 {
+    margin: 0 0 .5rem 0;
+    font-size: 0.8rem;
+}
+
+#github-projects .repo-card p {
+    font-size: 0.6rem;
+    margin: 0.4rem 0;
+}
+
+#github-projects .repo-card a {
+    display: inline-block;
+    margin-top: .8rem;
+    background: #ffcc00;
+    border: 4px solid #000;
+    padding: .4rem .8rem;
+    color: #000;
+    text-decoration: none;
+    font-size: .6rem;
+}
+
+#github-projects .repo-card a:hover {
+    background: #ffe066;
+}
+
+
+/* =====================================================
+USER STATE SECTION
+   ===================================================== */
+#userStateSection {
+    background: #fff;
+    border: 4px solid #000;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 5px 5px 0 #333;
+    border-radius: 6px;
+}
+
+#userStateSection p {
+    font-size: .7rem;
+    margin-top: 0.8rem;
+}
+
+
+/* =====================================================
+ TIMER + VISIT COUNTER
+   ===================================================== */
+#visitTimer, #visitCount {
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+.controls button {
+    font-family: 'Super Mario 256', sans-serif;
+    font-size: 0.6rem;
+    padding: 0.6rem 1rem;
+
+    background: #ffcc00; 
+    border: 4px solid #000;
+    border-radius: 6px;
+    color: #000;
+
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #222;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover effect */
+.controls button:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0 #222;
+    background: #ffe066;
+}
+
+/* Click effect */
+.controls button:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0 #000;
+}
+  
+  
